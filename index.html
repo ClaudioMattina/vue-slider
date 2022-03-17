@@ -18,6 +18,9 @@
     <!-- Custom style -->
     <link rel="stylesheet" href="style.css">
 
+     <!-- Vue -->
+     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
     <title>Vue carousel</title>
 
 </head>
@@ -37,12 +40,25 @@
                     <div class="col-12 p-5">
                         <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel">
                             <div class="my-carousel-images">
-                                <!-- immagini -->
+                                <div class="my-carousel-item" v-for="(images, index) in images" :class="(index == activeImage) ? 'active' : '' ">
+                                    <img class="img-fluid" :src="images.url" :alt="images.title">
+                                    <div class="item-description px-5">
+                                        <h2> {{ images.title }} </h2>
+                                        <p> {{ images.description }} </p>
+                                    </div>
+                                </div>
+                                
                             </div>
+
                             <div class="my-thumbnails position-relative">
                                 <!-- prev -->
                                 <div class="my-previous position-absolute">
                                     <span class="my-prev-hook"></span>
+                                </div>
+
+                                <div class="my-thumbnail" v-for="thumbnail in images">
+                                    <img :src="thumbnail.url" :alt="`thumbnail of ${thumbnail.title} picture`" class="img-fluid">
+
                                 </div>
                                 <!-- immagini interne -->
                                 <!-- next -->
@@ -65,9 +81,8 @@
         
 
 
-    
-    <!-- Vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+   
     <!-- my script -->
     <script type="text/javascript" src="script.js"></script>
 </body>

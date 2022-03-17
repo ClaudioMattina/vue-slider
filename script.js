@@ -1,10 +1,14 @@
 
 
 const app = new Vue({
+
     el:"#app",
+
     data : { 
-        
-        post: images = [
+
+        activeImage: 0,
+
+        images: [
         {
             url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
             title: 'Svezia',
@@ -35,7 +39,8 @@ const app = new Vue({
     ],
 
     },
-})
+
+});
 
 
 
