@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col-12 p-5">
-                        <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel">
+                        <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel" @mouseover="stopScroll()" @mouseleave="autoScroll()">
                             <div class="my-carousel-images">
                                 <div class="my-carousel-item" v-for="(images, index) in images" :class="(index == activeImage) ? 'active' : '' ">
                                     <img class="img-fluid" :src="images.url" :alt="images.title">
@@ -52,17 +52,17 @@
 
                             <div class="my-thumbnails position-relative">
                                 <!-- prev -->
-                                <div class="my-previous position-absolute">
+                                <div class="my-previous position-absolute" @click = "previusImg()">
                                     <span class="my-prev-hook"></span>
                                 </div>
 
-                                <div class="my-thumbnail" v-for="thumbnail in images">
+                                <div class="my-thumbnail" v-for="(thumbnail, index) in images" :class="(index == activeImage) ? 'active' : '' " @click="changeSlide(index)">
                                     <img :src="thumbnail.url" :alt="`thumbnail of ${thumbnail.title} picture`" class="img-fluid">
 
                                 </div>
                                 <!-- immagini interne -->
                                 <!-- next -->
-                                <div class="my-next position-absolute">
+                                <div class="my-next position-absolute" @click = "nextImg()">
                                     <span class="my-next-hook"></span>
                                 </div>
                             </div>

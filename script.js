@@ -8,6 +8,8 @@ const app = new Vue({
 
         activeImage: 0,
 
+        timingScroll: null,
+
         images: [
         {
             url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -40,25 +42,38 @@ const app = new Vue({
 
     },
 
-    method : {
+    methods : {
         previusImg(){
             if(this.activeImage === 0){
-                this.activeImage = images.lenght -1
+                this.activeImage = this.images.length -1;
             }else{
                 this.activeImage--;
             }
         },
 
         nextImg(){
-            if(this.activeImage === images.lenght -1){
-                this.activeImage = 0
+            if(this.activeImage === this.images.length-1){
+                this.activeImage = 0;
             }else{
                 this.activeImage++;
             }
+        },
+
+        changeSlide(imageIndex){
+            this.activeImage = imageIndex;
+        },
+
+        autoScroll(){
+            this.timingScroll = setInterval( this.nextImg , 1000);
+        },
+    
+        stopScroll(){
+            clearInterval(this.timingScroll);
+            this.timingScroll = null;
         }
-    }
+    },
 
-
+   
 
 });
 
