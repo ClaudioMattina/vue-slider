@@ -40,6 +40,26 @@ const app = new Vue({
 
     },
 
+    method : {
+        previusImg(){
+            if(this.activeImage === 0){
+                this.activeImage = images.lenght -1
+            }else{
+                this.activeImage--;
+            }
+        },
+
+        nextImg(){
+            if(this.activeImage === images.lenght -1){
+                this.activeImage = 0
+            }else{
+                this.activeImage++;
+            }
+        }
+    }
+
+
+
 });
 
 
